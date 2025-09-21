@@ -126,9 +126,56 @@ function readForm(form) {
   };
 }
 
+async function fetchAndRenderTop() {
+  const container = q('#search-results');
+  const err = q('#search-error');
+  container.innerHTML = '';
+  err.textContent = '';
+  try {
+    const res = await fetch('https://api.websim.com/api/v1/search/top?limit=36&offset=36');
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    const body = await res.json();
+    const items = Array.isArray(body.data) ? body.data : (body.results || []);
+    if (!items.length) {
+      err.textContent = 'No results returned.';
+      return;
+    }
+    items.forEach(it => {
+      const card = document.createElement('div');
+      card.className = 'meta-item';
+      // attempt to extract useful fields
+      const title = it.title || it.name || it.project_name || it.id || 'Untitled';
+      const desc = it.description || it.summary || '';
+      // user info
+      let userHtml = '';
+      if (it.user || it.created_by || it.owner) {
+        const u = it.user || it.created_by || it.owner;
+        if (u.username) {
+          const avatar = `https://images.websim.com/avatar/${encodeURIComponent(u.username)}`;
+          userHtml = `<a class="profile" href="https://websim.com/@${encodeURIComponent(u.username)}" target="_blank" rel="noopener noreferrer"><img src="${avatar}" alt="@${escapeHtml(u.username)}" class="avatar"> <span>@${escapeHtml(u.username)}</span></a>`;
+        }
+      }
+      // fallback for site/project links
+      const link = it.site_id ? `https://websim.com/c/${it.site_id}` : (it.project_id ? `https://websim.com/p/${it.project_id}` : (it.url || ''));
+      card.innerHTML = `
+        <div><b>${escapeHtml(title)}</b>
+        <div class="muted">${escapeHtml(desc)}</div>
+        <div style="margin-top:8px">${userHtml}</div>
+        ${link ? `<div style="margin-top:8px"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Open</a></div>` : ''}
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  } catch (e) {
+    err.textContent = 'Error fetching results: ' + e.message;
+    console.error(e);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderSnapshot();
   runDiagnostics();
+  fetchAndRenderTop();
 
   q('#refreshBtn').addEventListener('click', () => {
     renderSnapshot();
@@ -159,4 +206,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 /* ...existing code... */
-

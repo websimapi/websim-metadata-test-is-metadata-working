@@ -13,7 +13,9 @@ header h1{margin:0;font-size:1.6rem}
 .panel{border:1px solid #eee;padding:16px;border-radius:8px;margin-top:18px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
 .meta-item{background:#fafafa;padding:10px;border-radius:6px;border:1px solid #f0f0f0}
-.meta-item b{display:block;margin-bottom:6px}
+.meta-item .avatar{width:36px;height:36px;border-radius:6px;object-fit:cover;vertical-align:middle;margin-right:8px}
+.meta-item .profile{display:inline-flex;align-items:center;gap:8px;color:var(--fg);text-decoration:none}
+.meta-item a{color:var(--accent)}
 .btn{background:var(--accent);color:white;padding:8px 12px;border-radius:6px;border:0;cursor:pointer}
 .btn.ghost{background:transparent;color:var(--accent);border:1px solid #e6eef9}
 label{display:block;margin:8px 0;font-size:0.9rem}
@@ -23,4 +25,3 @@ textarea{min-height:64px}
 .note{color:var(--muted);font-size:0.9rem;margin-top:8px}
 #diag{margin:0;padding-left:18px;color:var(--muted)}
 footer{margin-top:20px;color:var(--muted)}
-
