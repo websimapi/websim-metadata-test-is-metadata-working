@@ -1,0 +1,16 @@
+{
+  "short_name": "MetaTest",
+  "name": "Metadata Test — Is metadata working?",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "https://www.google.com/s2/favicons?domain=example.com",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}
+

@@ -1,0 +1,26 @@
+:root{
+  --bg:#fff;
+  --fg:#111;
+  --muted:#666;
+  --accent:#0a66c2;
+  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+body{margin:24px;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto}
+header h1{margin:0;font-size:1.6rem}
+.lead{color:var(--muted);margin-top:6px}
+.panel{border:1px solid #eee;padding:16px;border-radius:8px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.meta-item{background:#fafafa;padding:10px;border-radius:6px;border:1px solid #f0f0f0}
+.meta-item b{display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:white;padding:8px 12px;border-radius:6px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid #e6eef9}
+label{display:block;margin:8px 0;font-size:0.9rem}
+input,textarea{width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;font-family:inherit}
+textarea{min-height:64px}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.note{color:var(--muted);font-size:0.9rem;margin-top:8px}
+#diag{margin:0;padding-left:18px;color:var(--muted)}
+footer{margin-top:20px;color:var(--muted)}
+

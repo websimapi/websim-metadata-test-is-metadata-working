@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Metadata Test — Is metadata working?</title>
+  <meta name="description" content="A diagnostic page that tests common metadata (SEO, Open Graph, Twitter, manifest, theme-color, robots, canonical, structured data) and lets you modify them live.">
+  <meta name="keywords" content="metadata,test,seo,open graph,twitter cards,structured data,manifest">
+  <meta name="author" content="@websim-tester">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://example.com/metadata-test">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OG: Metadata Test">
+  <meta property="og:description" content="Testing Open Graph metadata">
+  <meta property="og:url" content="https://example.com/metadata-test">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=1200&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@websim_tester">
+  <meta name="twitter:title" content="Twitter: Metadata Test">
+  <meta name="twitter:description" content="Testing Twitter card metadata">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=1200&q=80">
+  <meta name="theme-color" content="#111111">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="https://www.google.com/s2/favicons?domain=example.com" type="image/x-icon">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Metadata Test — Is metadata working?",
+    "url": "https://example.com/metadata-test",
+    "description": "A diagnostic page that tests common metadata and lets you modify them live."
+  }
+  </script>
+
+  <!-- Import map + tiny utility (no build) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "tiny-toast/": "https://cdn.jsdelivr.net/npm/tiny-toast@0.5.0/dist/"
+    }
+  }
+  </script>
+
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Metadata Test</h1>
+      <p class="lead">Checks static and dynamic metadata (SEO, Open Graph, Twitter, JSON-LD, manifest)</p>
+    </header>
+
+    <section class="panel">
+      <h2>Current meta snapshot</h2>
+      <div id="meta-list" class="grid"></div>
+      <button id="refreshBtn" class="btn">Refresh snapshot</button>
+    </section>
+
+    <section class="panel">
+      <h2>Modify metadata (live)</h2>
+      <form id="metaForm">
+        <label>Title<input name="title" placeholder="Document title"></label>
+        <label>Description<textarea name="description" placeholder="Meta description"></textarea></label>
+        <label>OG Title<input name="og:title" placeholder="OG title"></label>
+        <label>OG Description<textarea name="og:description" placeholder="OG description"></textarea></label>
+        <label>OG Image URL<input name="og:image" placeholder="https://..."></label>
+        <div class="row">
+          <button type="submit" class="btn">Apply</button>
+          <button type="button" id="resetBtn" class="btn ghost">Reset</button>
+        </div>
+      </form>
+      <p class="note">Changes update DOM meta tags and the JSON-LD block.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Diagnostics</h2>
+      <ul id="diag"></ul>
+    </section>
+
+    <footer>
+      <small>Designed for testing. Not a live production page.</small>
+    </footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
